@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/social-proof-section-withg-sass-flexbox-and-bem-hVmr7k3Pv)
-- Live Site URL: [Add live site URL here](https://ascecent.github.io/fem-social-proof-section/)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/social-proof-section-withg-sass-flexbox-and-bem-hVmr7k3Pv)
+- Live Site URL: [Live Site](https://ascecent.github.io/fem-social-proof-section/)
 
 ## My process
 
