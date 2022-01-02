@@ -1,0 +1,168 @@
+@use "sass:math";
+
+/*=========================================================
+================       CORE STYLES        =================
+=========================================================*/
+
+// -------------------------------
+// FUNCTIONS
+// -------------------------------
+
+// Convert px to rem units
+@function pxToRem($unit) {
+  @return math.div($unit, 16) + rem;
+}
+
+// -------------------------------
+
+// -------------------------------
+// VARIABLES
+// -------------------------------
+
+// ------------
+// BREAKPOINTS
+// ------------
+
+$breakpoints: (
+  xsm: 400px,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xlg: 1400px,
+);
+
+// ------------
+
+// ------------
+// COLORS
+// ------------
+
+// Primary
+$veryDarkMagenta: hsl(300, 43%, 22%);
+$softPink: hsl(333, 80%, 67%);
+
+// Neutral
+$darkGrayishMagenta: hsl(303, 10%, 53%);
+$lightGrayishMagenta: hsl(300, 24%, 96%);
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
+
+// ------------
+
+// ------------
+// FONTS
+// ------------
+
+// Family
+$fontFamilySpartan: "Spartan", sans-serif;
+
+// Size
+$fontSizeNormal: pxToRem(15);
+
+// Weight
+$fontWeightRegular: 400;
+$fontWeightMedium: 500;
+$fontWeightSemiBold: 600;
+$fontWeightBold: 700;
+
+// ------------
+
+// -------------------------------
+
+// -------------------------------
+// MIXINS
+// -------------------------------
+
+// Background gradient
+@mixin gradient {
+  background: linear-gradient(to bottom, $softViolet, $softBlue) center/cover
+    no-repeat;
+}
+
+// Media breakpoint min-width
+@mixin media-breakpoint-up($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// Media breakpoint max-width
+@mixin media-breakpoint-down($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// Flex item with media queries
+@mixin flexWithBreakpoint(
+  $column_gap,
+  $justify,
+  $align,
+  $breakpoint: "",
+  $row_gap: 0,
+  $direction: row
+) {
+  $column_gap: pxToRem($column_gap);
+  $row_gap: pxToRem($row_gap);
+
+  @if ($breakpoint == "") {
+    display: flex;
+    column-gap: $column_gap;
+    align-items: $align;
+    justify-content: $justify;
+    row-gap: $row_gap;
+    flex-direction: $direction;
+  } @else {
+    @include media-breakpoint-up($breakpoint) {
+      display: flex;
+      column-gap: $column_gap;
+      align-items: $align;
+      justify-content: $justify;
+      row-gap: $row_gap;
+      flex-direction: $direction;
+    }
+  }
+}
+
+// -------------------------------
+
+// -------------------------------
+// GLOBAL STYLES
+// -------------------------------
+
+body {
+  background: url("../app/assets/images/bg-pattern-top-mobile.svg") top
+      left/contain no-repeat,
+    url("../app/assets/images/bg-pattern-bottom-mobile.svg") bottom right/100%
+      50% no-repeat;
+
+  background-color: $white;
+  min-height: 100vh;
+
+  font: {
+    family: $fontFamilySpartan;
+    size: $fontSizeNormal;
+    weight: $fontWeightRegular;
+  }
+
+  @include media-breakpoint-up(lg) {
+    background: url("../app/assets/images/bg-pattern-top-desktop.svg") top
+        left/45% no-repeat,
+      url("../app/assets/images/bg-pattern-bottom-desktop.svg") bottom
+        right/80% 85% no-repeat;
+  }
+}
+
+// -------------------------------

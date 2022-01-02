@@ -1,0 +1,48 @@
+/*=========================================================
+==================     LAYOUT STYLES    ===================
+=========================================================*/
+
+body {
+  @include flexWithBreakpoint(0, center, center, lg);
+}
+
+// Social-proof card
+
+.social-proof {
+  &__info {
+    @include flexWithBreakpoint(83.2, unset, center, lg);
+  }
+
+  &__rating {
+    &-item {
+      @include flexWithBreakpoint(35, unset, center, "", 15, column);
+
+      @include media-breakpoint-up(lg) {
+        flex-direction: row;
+        align-self: flex-start;
+      }
+    }
+
+    @include flexWithBreakpoint(16, center, center, md);
+
+    @include media-breakpoint-up(lg) {
+      justify-content: flex-start;
+      row-gap: pxToRem(15);
+      flex-direction: column;
+    }
+  }
+
+  &__testimonials {
+    @include flexWithBreakpoint(16, center, stretch, md);
+
+    @include media-breakpoint-up(lg) {
+      align-items: flex-start;
+    }
+  }
+
+  &__testimonial {
+    &__author {
+      @include flexWithBreakpoint(24, unset, center);
+    }
+  }
+}

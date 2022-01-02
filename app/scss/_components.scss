@@ -1,0 +1,202 @@
+/*=========================================================
+================     COMPONENTS STYLES    =================
+=========================================================*/
+
+// Social-proof card
+
+.social-proof {
+  padding: pxToRem(80) pxToRem(24) pxToRem(100);
+  text-align: center;
+  color: $darkGrayishMagenta;
+  max-width: pxToRem(1110);
+
+  &__info {
+    @include media-breakpoint-up(lg) {
+      margin-bottom: pxToRem(75);
+      text-align: left;
+    }
+  }
+
+  &__description {
+    margin: auto;
+    max-width: pxToRem(450);
+
+    @include media-breakpoint-up(lg) {
+      margin: 0;
+      align-self: flex-start;
+    }
+  }
+
+  &__title {
+    font-size: clamp(pxToRem(32), 5vw, pxToRem(50));
+    color: $veryDarkMagenta;
+    width: 100%;
+    margin: 0 0 pxToRem(35);
+    letter-spacing: -0.04rem;
+
+    @include media-breakpoint-up(lg) {
+      letter-spacing: -0.06rem;
+      margin-bottom: pxToRem(15);
+    }
+  }
+
+  &__text {
+    letter-spacing: -0.031rem;
+    line-height: 1.9;
+    margin: 0;
+    max-width: pxToRem(450);
+  }
+
+  &__rating {
+    padding: pxToRem(50) 0;
+
+    &-item {
+      border-radius: pxToRem(9);
+      background-color: $lightGrayishMagenta;
+      color: $veryDarkMagenta;
+      padding: pxToRem(15) pxToRem(15) pxToRem(18);
+      font: {
+        weight: $fontWeightSemiBold;
+        size: pxToRem(14);
+      }
+      max-width: pxToRem(505);
+      margin: auto;
+
+      p {
+        margin: 0;
+      }
+
+      @include media-breakpoint-down(md) {
+        &:not(:last-child) {
+          margin-bottom: pxToRem(15);
+        }
+      }
+
+      @include media-breakpoint-up(md) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin: 0;
+      }
+
+      @include media-breakpoint-up(lg) {
+        padding: pxToRem(20) pxToRem(85) pxToRem(20) pxToRem(30);
+
+        @for $i from 2 through 3 {
+          &:nth-child(#{$i}) {
+            margin-left: 48 * ($i - 1) + px;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: 0;
+      justify-self: flex-start;
+      align-self: flex-start;
+    }
+  }
+
+  &__testimonial {
+    background-color: $veryDarkMagenta;
+
+    color: $white;
+    text-align: left;
+
+    border-radius: pxToRem(7);
+    max-width: pxToRem(350);
+
+    padding: pxToRem(40) pxToRem(32);
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media-breakpoint-up(md) {
+      margin: 0;
+    }
+
+    @include media-breakpoint-down(md) {
+      &:not(:last-child) {
+        margin-bottom: pxToRem(16);
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      @for $i from 2 through 3 {
+        &:nth-child(#{$i}) {
+          margin-top: 16 * ($i - 1) + px;
+        }
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+
+    &__author {
+      margin-bottom: pxToRem(30);
+    }
+
+    .author {
+      &__info {
+        letter-spacing: -0.03rem;
+        font-size: pxToRem(14);
+      }
+
+      &__name {
+        font-weight: $fontWeightSemiBold;
+        margin-bottom: pxToRem(8);
+      }
+
+      &__description {
+        color: $softPink;
+      }
+
+      &__comment {
+        line-height: 1.5;
+        letter-spacing: -0.062rem;
+        margin: 0;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: pxToRem(125) 0;
+  }
+}
+
+// Icons
+
+.icon {
+  height: pxToRem(20);
+  width: pxToRem(20);
+  display: inline-block;
+
+  &--star {
+    @extend .icon;
+    background: url("../app/assets/images/icon-star.svg") center/contain
+      no-repeat;
+  }
+}
+
+.avatar--author {
+  width: pxToRem(40);
+  height: pxToRem(40);
+  display: inline-block;
+  border-radius: 50%;
+  background: {
+    size: cover;
+    position: center;
+    repeat: no-repeat;
+  }
+
+  &-1 {
+    background-image: url("../app/assets/images/image-colton.jpg");
+  }
+
+  &-2 {
+    background-image: url("../app/assets/images/image-irene.jpg");
+  }
+
+  &-3 {
+    background-image: url("../app/assets/images/image-anne.jpg");
+  }
+}
